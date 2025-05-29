@@ -2,56 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* PRD Colors translated to HSL for Shadcn */
+    --background: 210 17% 98%; /* PRD #F8F9FA */
+    --foreground: 210 17% 17%; /* PRD #212529 primaryText */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* PRD #FFFFFF surface */
+    --card-foreground: 210 17% 17%; /* PRD #212529 primaryText */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: 0 0% 100%; /* PRD #FFFFFF surface */
+    --popover-foreground: 210 17% 17%; /* PRD #212529 primaryText */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: 211 100% 50%; /* PRD #007BFF accentBlue */
+    --primary-foreground: 0 0% 100%; /* White for contrast on blue */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 210 14% 93%; /* PRD #E9ECEF sidebar color, used as secondary bg */
+    --secondary-foreground: 210 17% 17%; /* PRD #212529 primaryText */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 14% 93%; /* PRD #E9ECEF sidebar color, for muted elements/backgrounds */
+    --muted-foreground: 208 8% 48%; /* PRD #6C757D secondaryText */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 145 63% 40%; /* PRD #28A745 accentGreen */
+    --accent-foreground: 0 0% 100%; /* White for contrast on green */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 354 70% 54%; /* PRD #DC3545 accentRed */
+    --destructive-foreground: 0 0% 100%; /* White for contrast on red */
 
-    --radius: 0.5rem;
+    --border: 210 16% 91%; /* PRD #DEE2E6 */
+    --input: 210 16% 91%; /* PRD #DEE2E6, same as border */
+    --ring: 211 100% 50%; /* PRD #007BFF accentBlue, for focus rings */
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.5rem; /* PRD borderRadius.default: "rounded-lg" (0.5rem) */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Specific PRD colors for direct use if needed, also mapped to Tailwind config */
+    --secondary-text-color: 208 8% 48%; /* PRD #6C757D secondaryText */
+    --accent-yellow-color: 45 100% 51%; /* PRD #FFC107 accentYellow */
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar specific variables from PRD & adapting existing structure */
+    --sidebar-background: 210 14% 93%; /* PRD #E9ECEF sidebar */
+    --sidebar-foreground: 210 17% 17%; /* PRD #212529 primaryText */
+    --sidebar-primary: 211 100% 50%; /* PRD #007BFF accentBlue, for active/primary items in sidebar */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 210 17% 98%; /* PRD #F8F9FA background, for hover/light accent within sidebar */
+    --sidebar-accent-foreground: 210 17% 17%; /* PRD #212529 primaryText */
+    --sidebar-border: 210 16% 91%; /* PRD #DEE2E6 border, for dividers in sidebar */
+    --sidebar-ring: 211 100% 50%; /* PRD #007BFF accentBlue, for focus in sidebar */
   }
 
   .dark {
+    /* Dark mode variables are not specified in the PRD's designSystem section. */
+    /* Preserving existing dark mode values as per instruction to only update based on PRD. */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -79,6 +84,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
+    /* Preserving existing dark sidebar variables */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -96,6 +103,9 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-sm; /* text-sm from PRD body typography */
+    /* font-family is set by Tailwind's base styles using var(--font-sans) from tailwind.config.ts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
